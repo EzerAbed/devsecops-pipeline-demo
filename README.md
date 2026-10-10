@@ -94,8 +94,7 @@ Branch `demo-secret` commits a **fake** API key. Gitleaks fails the build, with 
 - How CI works end to end: commit, automatic build, test, scan, pass or fail
 - How a Jenkins controller, pipelines and the Jenkinsfile fit together
 - Building a custom Docker image and using Docker Compose with a persistent volume
-- Why every `sh` step runs in its own shell and needs the virtualenv activated again
-- Applying least privilege (switching back from root in the Dockerfile) and shift-left security in practice
+
 ## Possible improvements
  
 - Automatic builds on every push (Poll SCM or webhooks)
