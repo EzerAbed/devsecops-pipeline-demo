@@ -8,6 +8,7 @@ pipeline{
                     python3 -m venv venv
                     . venv/bin/activate
                     pip install -r requirements.txt
+                    pip install bandit pip-audit
                 '''
             }
         }
@@ -17,6 +18,24 @@ pipeline{
                 sh '''
                     . venv/bin/activate
                     pytest
+                '''
+            }
+        }
+
+        stage("SAST - Bandit"){
+            steps{
+                sh'''
+                    . venv/bin/activate
+                    bandit -r . exclude ./venv, ./test_app.py
+                '''
+            }
+        }
+
+        stage("Dependency Scan - pip-audit"){
+            steps{
+                sh'''
+                    . venv/bin/activate
+                    pip-audit -r requirements.txt
                 '''
             }
         }
