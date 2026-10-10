@@ -26,7 +26,7 @@ pipeline{
             steps{
                 sh'''
                     . venv/bin/activate
-                    bandit -r . exclude ./venv, ./test_app.py
+                    bandit -r . -x ./venv,./test_app.py
                 '''
             }
         }
