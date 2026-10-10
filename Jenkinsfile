@@ -39,5 +39,13 @@ pipeline{
                 '''
             }
         }
+
+        stage("Secrets scan - Gitleaks"){
+            steps{
+                sh'''
+                    gitleaks detect --source . --verbose --redact
+                '''
+            }
+        }
     }
 }
